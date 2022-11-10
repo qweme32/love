@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W4A77H3F2C6</title>
+</head>
+<body>
+    <div id="timer">00:00:00</div>
+
+    <style>
+        body{
+            background: #111;
+            font-family: 'Manrope', sans-serif;
+            margin: 0px;
+        }
+        #timer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 64px;
+            color: rgb(158, 104, 245);
+            font-weight: 600;
+        }
+
+        @media (orientation: portrait) {
+            #timer{
+                height: 80vh;
+                font-size: 32px;
+            }
+        }
+    </style>
+    <script>
+        const end = 1670360400;
+        const elm = document.querySelector("#timer");
+
+        let timer = () => {
+            let now = Math.floor(Date.now() / 1000);
+            let remain = end - now;
+
+            let hours = Math.floor(remain / 60 / 60);
+            let mins = Math.floor(remain / 60) - hours * 60;
+            let secs = remain - ((mins * 60) + (hours * 60 * 60));
+
+            elm.textContent = `${hours}:${mins}:${secs}`;
+
+            setTimeout(timer, 1000);
+        }
+
+        timer(); // run
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> 
+</body>
+</html>
