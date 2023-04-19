@@ -4,56 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>W4A77H3F2C6</title>
+    <title>Eternal love.</title>
+    <link rel="shortcut icon" href="heart.png" type="image/x-png">
+    <link href="https://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
 </head>
 <body>
-    <div id="timer">00:00:00</div>
-
     <style>
         body{
+            margin: 0;
             background: #111;
-            font-family: 'Manrope', sans-serif;
-            margin: 0px;
+            font-family: 'ArcadeClassic', sans-serif;
         }
-        #timer{
+
+        .content{
             display: flex;
+            height: 90vh;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            font-size: 64px;
-            color: rgb(158, 104, 245);
-            font-weight: 600;
+            flex-direction: column;
         }
 
-        @media (orientation: portrait) {
-            #timer{
-                height: 80vh;
-                font-size: 32px;
-            }
+        .heart {
+            width: 300px;
+        }
+
+        .date{
+            font-size: 24px;
+            color: #fff;
+        }
+        
+        .value {
+            margin-left: 8px;
+        }
+        .value:first-child{
+            margin-left: 0px;
+        }
+        .colorful{
+            color: #d83c49;
         }
     </style>
+
+    <div class="content">
+        <img class="heart" src="heart.png"/>
+        <div class="date">
+            <span class="value colorful day">0d</span>
+            <span class="value hour">0h</span>
+            <span class="value minute">0m</span>
+            <span class="value second">0s</span>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
     <script>
-        const end = 1670360400;
-        const elm = document.querySelector("#timer");
-
-        let timer = () => {
+        let loop = () => {
             let now = Math.floor(Date.now() / 1000);
-            let remain = end - now;
+            let time = moment.duration(now - 1681598371, 'seconds');
 
-            let hours = Math.floor(remain / 60 / 60);
-            let mins = Math.floor(remain / 60) - hours * 60;
-            let secs = remain - ((mins * 60) + (hours * 60 * 60));
+            document.querySelector(".day").textContent = time.days().toString() + "d";
+            document.querySelector(".hour").textContent = time.hours().toString() + "h";
+            document.querySelector(".minute").textContent = time.minutes().toString() + "m";
+            document.querySelector(".second").textContent = time.seconds().toString() + "s";
 
-            elm.textContent = `${hours}:${mins}:${secs}`;
-
-            setTimeout(timer, 1000);
+            setTimeout(loop, 1000);
         }
 
-        timer(); // run
+        loop();
     </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> 
 </body>
 </html>
